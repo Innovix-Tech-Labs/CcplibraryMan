@@ -181,16 +181,7 @@ section .sec_img
 	margin-top: 0px;
 	background-image: url("images/3.jpg");
 }
-.box1
-{
-	height: 450px;
-	width: 450px;
-	background-color: black;
-	margin: 70px auto;
-	opacity: .7;
-	color: white;
-	padding: 20px;
-}
+
 form .login
 {
 	margin: auto 50px;

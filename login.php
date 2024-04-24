@@ -11,16 +11,28 @@
   <link rel="stylesheet" type="text/css" href="style.css">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" > 
   
   <style type="text/css">
     section
     {
       margin-top: -20px;
     }
+    .box1
+{
+	height: 500px;
+	width: 450px;
+	background-color: black;
+	margin: 70px auto;
+	opacity: .8;
+	color: white;
+	padding: 20px;
+}
+label
+{
+  font-size: 18px;
+  font-family: 600;
+}
   </style>   
 </head>
 <body>
@@ -32,6 +44,11 @@
         <h1 style="text-align: center; font-size: 35px;font-family: Lucida Console;">Library Management System</h1>
         <h1 style="text-align: center; font-size: 25px;">User Login Form</h1><br>
       <form  name="login" action="" method="post">
+        <b><p style="padding-left: 50px;font-size: 15px; font-weight: 700;">Login as:</p></b>
+        <input style="margin-Left: 50px; width: 18px;" type="Radio" name="user" id="admin" value="admin">
+        <label>Admin</label>
+        <input style="margin-Left: 50px; width: 18px;" type="Radio" name="user" id="student" value="student">
+        <lable>Student</lable>
         
         <div class="login">
           <input class="form-control" type="text" name="username" placeholder="Username" required=""> <br>
