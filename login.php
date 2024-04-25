@@ -7,7 +7,7 @@
 <html>
 <head>
 
-  <title>Student Login</title>
+  <title>Login</title>
   <link rel="stylesheet" type="text/css" href="style.css">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,7 +23,7 @@
 	height: 500px;
 	width: 450px;
 	background-color: black;
-	margin: 70px auto;
+	margin: 0px auto;
 	opacity: .8;
 	color: white;
 	padding: 20px;
@@ -46,9 +46,9 @@ label
       <form  name="login" action="" method="post">
         <b><p style="padding-left: 50px;font-size: 15px; font-weight: 700;">Login as:</p></b>
         <input style="margin-Left: 50px; width: 18px;" type="Radio" name="user" id="admin" value="admin">
-        <label>Admin</label>
+        <label for="admin">Admin</label>
         <input style="margin-Left: 50px; width: 18px;" type="Radio" name="user" id="student" value="student">
-        <lable>Student</lable>
+        <lable for="student">Student</lable>
         
         <div class="login">
           <input class="form-control" type="text" name="username" placeholder="Username" required=""> <br>
@@ -70,6 +70,42 @@ label
 
     if(isset($_POST['submit']))
     {
+      if($_POST['user']=='admin')
+      {
+        $count=0;
+      $res=mysqli_query($db,"SELECT * FROM `admin` WHERE username='$_POST[username]' && password='$_POST[password]';");
+      
+      $row= mysqli_fetch_assoc($res);
+      $count=mysqli_num_rows($res);
+
+      if($count==0)
+      {
+        ?>
+              <!--
+              <script type="text/javascript">
+                alert("The username and password doesn't match.");
+              </script> 
+              -->
+          <div class="alert alert-danger" style="width: 600px; margin-left: 370px; background-color: #de1313; color: white;">
+            <strong>The username and password doesn't match</strong>
+          </div>    
+        <?php
+      }
+      else
+      {
+        $_SESSION['login_user'] = $_POST['username'];
+        $_SESSION['pic']= $row['pic'];
+        $_SESSION['username']='';
+
+        ?>
+          <script type="text/javascript">
+            window.location="Admin_/profile.php"
+          </script>
+        <?php
+      }
+      }
+      else
+      {
       $count=0;
       $res=mysqli_query($db,"SELECT * FROM `student` WHERE username='$_POST[username]' && password='$_POST[password]';");
       
@@ -84,7 +120,7 @@ label
                 alert("The username and password doesn't match.");
               </script> 
               -->
-          <div class="alert alert-danger" style="width: 600px; margin-left: 370px; background-color: #de1313; color: white">
+          <div class="alert alert-danger" style="width: 600px; margin-left: 370px; background-color: #de1313; color: white;">
             <strong>The username and password doesn't match</strong>
           </div>    
         <?php
@@ -96,10 +132,11 @@ label
 
         ?>
           <script type="text/javascript">
-            window.location="profile.php"
+            window.location="Student_/profile.php"
           </script>
         <?php
       }
+    }
     }
 
   ?>
