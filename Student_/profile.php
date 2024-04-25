@@ -31,12 +31,12 @@
  						</script>
  					<?php
  				}
- 				$res=mysqli_query($db,"SELECT * FROM 'student' where username='$_SESSION[login_user]' ;");
+ 				$q=mysqli_query($db,"SELECT * FROM student where username='$_SESSION[login_user]' ;");
  			?>
  			<h2 style="text-align: center;">My Profile</h2>
 
  			<?php
- 				$row=mysqli_fetch_assoc($res);
+ 				$row=mysqli_fetch_assoc($q);
 
  				echo "<div style='text-align: center'>
  					<img class='img-circle profile-img' height=110 width=120 src='images/".$_SESSION['pic']."'>
