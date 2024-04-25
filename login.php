@@ -99,7 +99,7 @@ label
 
         ?>
           <script type="text/javascript">
-            window.location="Admin_/profile.php"
+            window.location="Admin_/add.php"
           </script>
         <?php
       }
